@@ -7,47 +7,34 @@
   <div class="order-summary jumbotron">
     <h4>Thank you for your order! Order confirmation has been sent to <%= @order.email %></h4>
   </div>
-
-  <div>
-  ORDERS DATA RECEIVED INTO THE TEMPLATE
-    <%= @order.inspect %>
-    <% @order.line_items.each do |line_item|  %>
-      <li><%= line_item.inspect %></li> 
-      <li><%= line_item.product.inspect  %></li>
-    <% end %>
-  </div>
-
-    <h4> </h4>
-    <div class="panel panel-default items">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th colspan="2">Product</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%# enhanced_cart.each do |item| %>
-          <% @order.line_items.each do |line_item|  %>
-            <%= render 'line_item', line_item: line_item %>
-          <% end %>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th colspan="4">
-              TOTAL:
-            </th>
-            <th>
-              <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
-            </th>
-          </tr>
-        </tfoot>
-      </table>
-    </div> 
-
-
+  <div class="panel panel-default items">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%# enhanced_cart.each do |item| %>
+        <% @order.line_items.each do |line_item|  %>
+          <%= render 'line_item', line_item: line_item %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div> 
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
