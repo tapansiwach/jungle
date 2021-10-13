@@ -5,7 +5,7 @@
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <h4>Thank you for your order! Order confirmation has been sent to <%= @order.email %></h4>
   </div>
 
   <div>
@@ -17,7 +17,8 @@
     <% end %>
   </div>
 
-   <div class="panel panel-default items">
+    <h4> </h4>
+    <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -30,7 +31,7 @@
         <tbody>
           <%# enhanced_cart.each do |item| %>
           <% @order.line_items.each do |line_item|  %>
-            <%# render 'line_item', line_item: line_item %>
+            <%= render 'line_item', line_item: line_item %>
           <% end %>
         </tbody>
         <tfoot>
@@ -39,7 +40,7 @@
               TOTAL:
             </th>
             <th>
-              <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
+              <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
             </th>
           </tr>
         </tfoot>
