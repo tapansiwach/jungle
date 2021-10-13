@@ -8,6 +8,12 @@
     <h4>Thank you for your order!</h4>
   </div>
 
+  <div>
+    <% @order.line_items.each do |line_item|  %>
+      <li><%= line_item.inspect %></li> 
+    <% end %>
+  </div>
+
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
